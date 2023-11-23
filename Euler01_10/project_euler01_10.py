@@ -41,3 +41,26 @@ def largest_prime_factor(number: int):
     return largest_factor
 
 # print(largest_prime_factor(600851475143))
+
+
+def largest_palindrome_product(number: int):
+    """Euler Project Q. 004
+    Find the largest palindrome made from the product of two 3-digit numbers.
+    """
+    largest_palindrome: int = 0
+    start_number: int = 10 ** (number - 1)
+    end_number: int = 10 ** number
+    # print(largest_palindrome, start_number, end_number)
+    for i in range(start_number, end_number):
+        # print(i)
+        for j in range(start_number, end_number):
+            product: int = i * j
+            if str(product) == str(product)[::-1]:
+                if product > largest_palindrome:
+                    largest_palindrome = product
+    if largest_palindrome == 0:
+        return "No Palindrome"
+
+    return largest_palindrome
+
+# largest_palindrome_product(4)

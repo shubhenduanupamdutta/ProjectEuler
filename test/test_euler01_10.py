@@ -53,3 +53,17 @@ class TestEuler03:
         largest_factor = self.euler03(number)
         assert isinstance(largest_factor, int)
         assert largest_factor == expected
+
+
+class TestEuler04:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler04 = pe01.largest_palindrome_product
+
+    @pytest.mark.parametrize("number, expected", [
+        (2, 9009), (3, 906609), (4, 99000099)
+    ])
+    def test_euler04(self, number, expected):
+        largest_palindrome = self.euler04(number)
+        assert isinstance(largest_palindrome, int)
+        assert largest_palindrome == expected
