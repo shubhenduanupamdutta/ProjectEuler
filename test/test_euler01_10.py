@@ -67,3 +67,17 @@ class TestEuler04:
         largest_palindrome = self.euler04(number)
         assert isinstance(largest_palindrome, int)
         assert largest_palindrome == expected
+
+
+class TestEuler05:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler05 = pe01.smallest_multiple
+
+    @pytest.mark.parametrize("number, expected", [
+        (5, 60), (7, 420), (10, 2520), (13, 360360), (20, 232792560)
+    ])
+    def test_euler05(self, number, expected):
+        smallest_multiple = self.euler05(number)
+        assert isinstance(smallest_multiple, int)
+        assert smallest_multiple == expected

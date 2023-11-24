@@ -63,4 +63,17 @@ def largest_palindrome_product(number: int):
 
     return largest_palindrome
 
-# largest_palindrome_product(4)
+
+def smallest_multiple(number: int):
+    """Euler Project Q. 005
+    Find the smallest positive number that is evenly divisible
+    by all of the numbers from 1 to a given number.
+    """
+    smallest_multiple: int = 1
+    for i in range(1, number + 1):
+        if smallest_multiple % i != 0:
+            for j in range(1, i + 1):
+                if (smallest_multiple * j) % i == 0:
+                    smallest_multiple *= j
+                    break
+    return smallest_multiple
