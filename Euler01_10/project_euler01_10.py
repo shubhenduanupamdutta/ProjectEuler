@@ -77,3 +77,26 @@ def smallest_multiple(number: int):
                     smallest_multiple *= j
                     break
     return smallest_multiple
+
+
+def sum_square_and_square_sum_diff(n):
+    """Euler Project Q. 006
+    Find the difference between the sum of the squares of the first n
+    natural numbers and the square of the sum.
+    """
+    sum_of_squares = sum([i ** 2 for i in range(1, n + 1)])
+    square_of_sum = sum([i for i in range(1, n + 1)]) ** 2
+    return abs(square_of_sum - sum_of_squares)
+
+
+def nth_prime_number(n: int):
+    """Euler Project Q. 007
+    Find the nth prime number.
+    """
+    prime_list: list[int] = [2]
+    i: int = 3
+    while len(prime_list) < n:
+        if all(i % j != 0 for j in prime_list):
+            prime_list.append(i)
+        i += 2
+    return prime_list[-1]

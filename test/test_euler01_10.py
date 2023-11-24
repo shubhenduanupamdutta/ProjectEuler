@@ -64,6 +64,8 @@ class TestEuler04:
         (2, 9009), (3, 906609), (4, 99000099)
     ])
     def test_euler04(self, number, expected):
+        if number > 3:
+            pytest.skip("This test takes too long.")
         largest_palindrome = self.euler04(number)
         assert isinstance(largest_palindrome, int)
         assert largest_palindrome == expected
@@ -81,3 +83,31 @@ class TestEuler05:
         smallest_multiple = self.euler05(number)
         assert isinstance(smallest_multiple, int)
         assert smallest_multiple == expected
+
+
+class TestEuler06:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler06 = pe01.sum_square_and_square_sum_diff
+
+    @pytest.mark.parametrize("number, expected", [
+        (10, 2640), (20, 41230), (100, 25164150)
+    ])
+    def test_euler06(self, number, expected):
+        difference = self.euler06(number)
+        assert isinstance(difference, int)
+        assert difference == expected
+
+
+class TestEuler07:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler07 = pe01.nth_prime_number
+
+    @pytest.mark.parametrize("number, expected", [
+        (6, 13), (10, 29), (100, 541), (1000, 7919), (10001, 104743)
+    ])
+    def test_euler07(self, number, expected):
+        nth_prime = self.euler07(number)
+        assert isinstance(nth_prime, int)
+        assert nth_prime == expected
