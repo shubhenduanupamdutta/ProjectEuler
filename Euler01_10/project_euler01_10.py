@@ -136,8 +136,8 @@ def prime_summation(n: int):
     """Euler Project Q. 010
     Find the sum of all primes below a given number.
     """
-    prime = [True for _ in range(n)]
-    p = 2
+    prime: list[bool] = [True for _ in range(n)]
+    p: int = 2
     while p * p <= n:
         if prime[p]:
             for i in range(p * p, n, p):
