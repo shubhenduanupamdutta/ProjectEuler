@@ -130,3 +130,19 @@ def special_pythagorean_triplet(n: int):
             if a ** 2 + b ** 2 == c ** 2:
                 return a * b * c
     return "No Pythagorean Triplet"
+
+
+def prime_summation(n: int):
+    """Euler Project Q. 010
+    Find the sum of all primes below a given number.
+    """
+    prime = [True for _ in range(n)]
+    p = 2
+    while p * p <= n:
+        if prime[p]:
+            for i in range(p * p, n, p):
+                prime[i] = False
+        p += 1
+    prime[0] = False
+    prime[1] = False
+    return sum([p for p, is_prime in enumerate(prime) if is_prime])

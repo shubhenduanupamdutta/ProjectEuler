@@ -142,3 +142,18 @@ class TestEuler09:
         product = self.euler09(number)
         assert isinstance(product, int)
         assert product == expected
+
+
+class TestEuler10:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler10 = pe01.prime_summation
+
+    @pytest.mark.parametrize("number, expected", [
+        (10, 17), (17, 41), (2001, 277050), (140759, 873608362),
+        (2000000, 142913828922)
+    ])
+    def test_euler10(self, number, expected):
+        summation = self.euler10(number)
+        assert isinstance(summation, int)
+        assert summation == expected
