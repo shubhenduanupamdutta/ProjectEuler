@@ -100,3 +100,19 @@ def nth_prime_number(n: int):
             prime_list.append(i)
         i += 2
     return prime_list[-1]
+
+
+def largest_product_in_series(series: str, n: int):
+    """Euler Project Q. 008
+    Find the largest product of n consecutive digits in a given series.
+    """
+    print(series, n)
+    largest_product: int = 1
+    for i in range(len(series) - n):
+        product: int = 1
+        for j in range(n):
+            print(series[i + j], product)
+            product *= int(series[i + j])
+        if product > largest_product:
+            largest_product = product
+    return largest_product
