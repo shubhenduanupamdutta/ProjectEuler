@@ -128,3 +128,17 @@ class TestEuler08:
         largest_product = self.euler08(self.series, number)
         assert isinstance(largest_product, int)
         assert largest_product == expected
+
+
+class TestEuler09:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler09 = pe01.special_pythagorean_triplet
+
+    @pytest.mark.parametrize("number, expected", [
+        (12, 60), (24, 480), (1000, 31875000)
+    ])
+    def test_euler09(self, number, expected):
+        product = self.euler09(number)
+        assert isinstance(product, int)
+        assert product == expected

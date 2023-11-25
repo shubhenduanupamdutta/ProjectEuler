@@ -116,3 +116,17 @@ def largest_product_in_series(series: str, n: int):
         if product > largest_product:
             largest_product = product
     return largest_product
+
+
+def special_pythagorean_triplet(n: int):
+    """Euler Project Q. 009
+    Find the product of a Pythagorean triplet whose sum is a given number.
+    """
+    for a in range(1, n):
+        for b in range(a + 1, n):
+            c = n - a - b
+            if c < b:
+                break
+            if a ** 2 + b ** 2 == c ** 2:
+                return a * b * c
+    return "No Pythagorean Triplet"
