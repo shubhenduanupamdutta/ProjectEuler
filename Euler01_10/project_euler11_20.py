@@ -40,7 +40,7 @@ def largest_grid_product(grid: list[list[int]], n: int):
             product = 1
             for k in range(n):
                 product *= grid[i + k][j - k]
-                print(i + k, j - k, grid[i + k][j -k], product)
+                print(i + k, j - k, grid[i + k][j - k], product)
             if product > largest_product:
                 largest_product = product
     # below diagonal
