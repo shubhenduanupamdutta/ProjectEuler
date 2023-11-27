@@ -9,32 +9,28 @@ def largest_grid_product(grid: list[list[int]], n: int):
             product = 1
             for j in range(n):
                 product *= row[i + j]
-                # print(row, i + j, row[i + j], product)
             if product > largest_product:
                 largest_product = product
-    # print(largest_product)
+
     # checking in columns
     for i in range(len(grid) - n + 1):
         for j in range(len(grid[i])):
             product = 1
             for k in range(n):
                 product *= grid[i + k][j]
-                # print(i + k, j, grid[i + k][j], product)
             if product > largest_product:
                 largest_product = product
-    # print(largest_product)
+
     # checking in left to right diagonals
     for i in range(len(grid) - n + 1):
         for j in range(len(grid[i]) - n + 1):
             product = 1
             for k in range(n):
                 product *= grid[i + k][j + k]
-                # print(i + k, j + k, grid[i + k][j + k], product)
             if product > largest_product:
                 largest_product = product
-    # print(largest_product)
+
     # checking in right to left diagonals
-    # above diagonal
     for i in range(len(grid) - n + 1):
         for j in range(n - 1, len(grid[i])):
             product = 1
@@ -43,16 +39,7 @@ def largest_grid_product(grid: list[list[int]], n: int):
                 print(i + k, j - k, grid[i + k][j - k], product)
             if product > largest_product:
                 largest_product = product
-    # below diagonal
-    for i in range(n - 1, len(grid) - n):
-        for j in range(len(grid[i]) - n):
-            product = 1
-            for k in range(n):
-                product *= grid[i - k][j + k]
-                # print(i - k, j + k, grid[i - k][j + k], product)
-            if product > largest_product:
-                largest_product = product
-    # print(largest_product)
+
     return largest_product
 
 
