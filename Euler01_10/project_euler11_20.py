@@ -43,11 +43,29 @@ def largest_grid_product(grid: list[list[int]], n: int):
     return largest_product
 
 
-grid2 = [
-    [40, 17, 81, 18, 57],
-    [74, 4, 36, 16, 29],
-    [36, 42, 69, 73, 45],
-    [51, 54, 69, 16, 92],
-    [7, 97, 57, 32, 16]
-]
-print(largest_grid_product(grid2, 4))
+def divisible_triangle_number(n):
+    """
+    Project Euler Q. 012
+    Find the first triangle number with more than n divisors."""
+
+    def num_of_divisors(number):
+        divisors_list = []
+        for i in range(1, int(number ** 0.5) + 1):
+            if number % i == 0:
+                divisors_list.append(i)
+                # Corresponding divisor is number // i
+                # Check for avoid duplicate
+                if i != (number // i):
+                    divisors_list.append(number // i)
+        divisors_list.append(number)
+        print(divisors_list)
+        return len(divisors_list)
+
+    triangle_number = 1
+    i = 2
+    while True:
+        if num_of_divisors(triangle_number) > n:
+            return triangle_number
+
+        triangle_number += i
+        i += 1
