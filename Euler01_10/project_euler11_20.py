@@ -86,20 +86,23 @@ def largest_collatz_sequence(n: int):
     Project Euler Q. 014
     Find the number under n that produces the longest Collatz chain."""
 
-    def collatz_sequence(number: int):
-        sequence = [number]
-        while number != 1:
+    def sequence_length(number: int):
+        if number in number_to_chain_length:
+            return number_to_chain_length[number]
+        else:
             if number % 2 == 0:
-                number = number // 2
+                number_to_chain_length[number] = 1 + sequence_length(number // 2)
             else:
-                number = 3 * number + 1
-            sequence.append(number)
-        print(sequence)
-        return sequence
+                number_to_chain_length[number] = 1 + sequence_length(3 * number + 1)
+            return number_to_chain_length[number]
 
-    longest_sequence = []
+    longest_chain: int = 0
+    number: int = -1
+    number_to_chain_length: dict[int, int] = {1: 1}
+
     for i in range(1, n):
-        sequence = collatz_sequence(i)
-        if len(sequence) > len(longest_sequence):
-            longest_sequence = sequence
-    return longest_sequence[0]
+        cur_sequence_length = sequence_length(i)
+        if (cur_sequence_length) > longest_chain:
+            longest_chain = cur_sequence_length
+            number = i
+    return number

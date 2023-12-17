@@ -195,8 +195,6 @@ class TestEuler14:
     @pytest.mark.parametrize("n, expected", [
         (14, 9), (5847, 3711), (46500, 35655), (54512, 52527), (100000, 77031), (1000000, 837799)])
     def test_largest_collatz_sequence(self, n, expected):
-        if n > 50000 and not int(os.environ.get("RUN_SLOW_TESTS")):
-            pytest.skip("This test is too slow.")
         longest_collatz_sequence = self.euler14(n)
         assert isinstance(longest_collatz_sequence, int)
         assert longest_collatz_sequence == expected
