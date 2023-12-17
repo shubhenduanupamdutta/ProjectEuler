@@ -98,7 +98,7 @@ def largest_collatz_sequence(n: int):
         return sequence
 
     longest_sequence = []
-    for i in range(1, n + 1):
+    for i in range(1, n):
         sequence = collatz_sequence(i)
         if len(sequence) > len(longest_sequence):
             longest_sequence = sequence
