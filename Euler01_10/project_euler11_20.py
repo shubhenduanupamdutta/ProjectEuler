@@ -68,3 +68,14 @@ def divisible_triangle_number(n):
 
         triangle_number += i
         i += 1
+
+
+def large_sum(numbers: list[str]):
+    """
+    Project Euler Q. 013
+    Find the first ten digits of the sum of the given numbers (in string format)."""
+
+    sum_of_numbers = 0
+    for number in numbers:
+        sum_of_numbers += int(number)
+    return int(str(sum_of_numbers)[:10])
