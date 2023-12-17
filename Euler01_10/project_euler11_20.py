@@ -58,7 +58,6 @@ def divisible_triangle_number(n):
                 if i != (number // i):
                     divisors_list.append(number // i)
         divisors_list.append(number)
-        print(divisors_list)
         return len(divisors_list)
 
     triangle_number = 1
