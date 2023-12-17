@@ -79,3 +79,27 @@ def large_sum(numbers: list[str]):
     for number in numbers:
         sum_of_numbers += int(number)
     return int(str(sum_of_numbers)[:10])
+
+
+def largest_collatz_sequence(n: int):
+    """
+    Project Euler Q. 014
+    Find the number under n that produces the longest Collatz chain."""
+
+    def collatz_sequence(number: int):
+        sequence = [number]
+        while number != 1:
+            if number % 2 == 0:
+                number = number // 2
+            else:
+                number = 3 * number + 1
+            sequence.append(number)
+        print(sequence)
+        return sequence
+
+    longest_sequence = []
+    for i in range(1, n + 1):
+        sequence = collatz_sequence(i)
+        if len(sequence) > len(longest_sequence):
+            longest_sequence = sequence
+    return longest_sequence[0]

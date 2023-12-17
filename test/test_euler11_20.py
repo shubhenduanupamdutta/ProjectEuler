@@ -1,3 +1,4 @@
+import os
 import pytest
 from Euler01_10 import project_euler11_20 as pe02
 
@@ -57,7 +58,7 @@ class TestEuler12:
         (5, 28), (23, 630), (167, 1385280), (374, 17907120), (500, 76576500)
     ])
     def test_divisible_triangle_number(self, n, expected):
-        if n > 400:
+        if n > 400 and not int(os.environ.get("RUN_SLOW_TESTS", 0)):
             pytest.skip("This test is too slow.")
         triangle_number = self.euler12(n)
         assert isinstance(triangle_number, int)
@@ -184,3 +185,18 @@ class TestEuler13:
         large_sum = self.euler13(self.numbers2)
         assert isinstance(large_sum, int)
         assert large_sum == 8348422521
+
+
+class TestEuler14:
+    def setup_method(self, method):
+        print(f"Setting up method {method.__name__}...")
+        self.euler14 = pe02.largest_collatz_sequence
+
+    @pytest.mark.parametrize("n, expected", [
+        (14, 9), (5847, 3711), (46500, 35655), (54512, 52527), (100000, 77031), (1000000, 837799)])
+    def test_largest_collatz_sequence(self, n, expected):
+        if n > 50000 and not int(os.environ.get("RUN_SLOW_TESTS")):
+            pytest.skip("This test is too slow.")
+        longest_collatz_sequence = self.euler14(n)
+        assert isinstance(longest_collatz_sequence, int)
+        assert longest_collatz_sequence == expected
